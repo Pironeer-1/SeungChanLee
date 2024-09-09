@@ -8,7 +8,7 @@ public enum PlayerStatEnum {
     PLAYER_BASE_MAGIC_POWER(5),
     PLAYER_BASE_ADD_STAT(13), // 추가 스탯
     BASE_STAT_INC(1), // 스탯 증가량
-    MAGIC_STAT_INC(3),
+    MAGIC_STAT_INC(3), // 마력은 세배
     ;
 
     private final int stat;
