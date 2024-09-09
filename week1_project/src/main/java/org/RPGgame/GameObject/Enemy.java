@@ -19,10 +19,11 @@ public class Enemy extends GameObject{
     }
 
     protected static int acc_MaxHp = EnemyStatEnum.BASE_HP.getStat();
-     protected static int acc_physicalPower = EnemyStatEnum.BASE_PHYSICAL_POWER.getStat();
+    protected static int acc_physicalPower = EnemyStatEnum.BASE_PHYSICAL_POWER.getStat();
     protected static int acc_physicalDefense = EnemyStatEnum.BASE_PHYSICAL_DEFENSE.getStat();
     protected static int acc_magicDefense = EnemyStatEnum.BASE_MAGIC_DEFENSE.getStat();
 
+    private final String name = "적";
     private int idlePercent;
 
     public Enemy() {

@@ -11,6 +11,8 @@ public abstract class Attack {
 
     protected final GameObject attacker;
     protected final GameObject attackTarget;
+    protected String attackerName;
+    protected String attackerTargetName;
     protected AttackType attackType; // 공격 타입
     protected int power; // 파워에 비래해 데미지
     protected int defense; // 공격 타입에 따른 방어력
@@ -28,7 +30,7 @@ public abstract class Attack {
     public int getPower() {
         return power;
     }
-
+    
     // 실제 공격 로직 실행, 피 대상자가 살아잇는지 리턴
     public abstract void execute();
 }

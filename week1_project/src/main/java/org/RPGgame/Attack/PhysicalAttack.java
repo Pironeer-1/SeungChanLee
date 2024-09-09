@@ -1,5 +1,6 @@
 package org.RPGgame.Attack;
 
+import org.RPGgame.Attack.io.OutputHandler;
 import org.RPGgame.GameObject.GameObject;
 
 public class PhysicalAttack extends Attack{
@@ -7,6 +8,8 @@ public class PhysicalAttack extends Attack{
 
     public PhysicalAttack(GameObject attacker,GameObject attackTarget) {
         super(attacker, attackTarget);
+        this.attackerName = attacker.getName();
+        this.attackerTargetName = attackTarget.getName();
         this.attackType = AttackType.PHYSICAL;
         this.power = attacker.getPhysicalPower();
         this.criticalChance = attacker.getCriticalChance();
@@ -21,6 +24,9 @@ public class PhysicalAttack extends Attack{
             this.damage = this.damage * 2;
         }
         attackTarget.decHp(this.damage);
+
+        OutputHandler.printAttack(this.attackerName,this.damage,this.attackType.getStr(),this.attackerTargetName);
+        OutputHandler.printTarget(attackerTargetName,this.attackTarget.getHealth());
 
         AttackLogList.add(this);
     }

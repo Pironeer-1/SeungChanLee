@@ -6,6 +6,7 @@ import org.RPGgame.GameObject.Enum.StatEnum;
 public abstract class GameObject {
 
     // 기본 속성
+    protected String name;
     protected int MaxHp = StatEnum.BASE_ZERO.getStat();
     protected int health = StatEnum.BASE_ZERO.getStat();
     protected int physicalPower = StatEnum.BASE_ZERO.getStat();
@@ -13,6 +14,10 @@ public abstract class GameObject {
     protected int physicalDefense = StatEnum.BASE_ZERO.getStat();
     protected int magicDefense = StatEnum.BASE_ZERO.getStat();
     protected int criticalChance = StatEnum.BASE_ZERO.getStat();
+
+    public String getName() {
+        return name;
+    }
 
     // 최대 체력
     public int getMaxHp() {

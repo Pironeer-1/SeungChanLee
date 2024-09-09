@@ -12,7 +12,6 @@ import org.RPGgame.GameObject.io.OutputHandler;
 
 public class Player extends GameObject{
     private int addStat;
-    private final String name;
 
     public Player(String name) {
         this.name = name;
