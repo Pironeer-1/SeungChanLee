@@ -1,6 +1,6 @@
 package org.RPGgame.Attack;
 
-import org.RPGgame.gameObject.GameObject;
+import org.RPGgame.GameObject.GameObject;
 
 public class MagicAttack extends Attack{
 
@@ -12,15 +12,9 @@ public class MagicAttack extends Attack{
     }
 
     @Override
-    Boolean execute() {
+    public void execute() {
         this.damage = Math.max((power - defense), 0) * 2;
         attackTarget.decHp(this.damage);
         AttackLogList.add(this);
-        return this.attackTarget.isAlive();
-    }
-
-    @Override
-    void printAttackLog() {
-
     }
 }

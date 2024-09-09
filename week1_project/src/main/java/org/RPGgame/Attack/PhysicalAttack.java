@@ -1,6 +1,6 @@
 package org.RPGgame.Attack;
 
-import org.RPGgame.gameObject.GameObject;
+import org.RPGgame.GameObject.GameObject;
 
 public class PhysicalAttack extends Attack{
     private final double criticalChance;
@@ -14,7 +14,7 @@ public class PhysicalAttack extends Attack{
     }
 
     @Override
-    Boolean execute() {
+    public void execute() {
         this.damage = Math.max((power - defense), 0);
         // 치명타 발생
         if (Math.random() < (double) criticalChance / 100) {
@@ -23,11 +23,5 @@ public class PhysicalAttack extends Attack{
         attackTarget.decHp(this.damage);
 
         AttackLogList.add(this);
-        return this.attackTarget.isAlive();
-    }
-
-    @Override
-    void printAttackLog() {
-
     }
 }

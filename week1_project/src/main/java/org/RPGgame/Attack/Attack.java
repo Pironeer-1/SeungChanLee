@@ -1,6 +1,6 @@
 package org.RPGgame.Attack;
 
-import org.RPGgame.gameObject.GameObject;
+import org.RPGgame.GameObject.GameObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +30,5 @@ public abstract class Attack {
     }
 
     // 실제 공격 로직 실행, 피 대상자가 살아잇는지 리턴
-    abstract Boolean execute();
-
-    // 로그 출력
-    abstract void printAttackLog();
+    public abstract void execute();
 }
