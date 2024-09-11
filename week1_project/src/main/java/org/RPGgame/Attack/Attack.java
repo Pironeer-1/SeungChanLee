@@ -30,7 +30,7 @@ public abstract class Attack {
     public int getPower() {
         return power;
     }
-    
-    // 실제 공격 로직 실행, 피 대상자가 살아잇는지 리턴
+
+    // 실제 공격 로직 실행
     public abstract void execute();
 }

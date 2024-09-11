@@ -23,49 +23,52 @@ public class Enemy extends GameObject{
     protected static int acc_physicalDefense = EnemyStatEnum.BASE_PHYSICAL_DEFENSE.getStat();
     protected static int acc_magicDefense = EnemyStatEnum.BASE_MAGIC_DEFENSE.getStat();
 
-    private final String name = "적";
-    private int idlePercent;
+    private final int idlePercent;
 
+    // 점점 적이 강해짐
     public Enemy() {
+        name = "적";
         Random random = new Random();
-        this.MaxHp = acc_MaxHp + random.nextInt(EnemyStatEnum.BASE_HP.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        this.MaxHp = acc_MaxHp + random.nextInt(1,EnemyStatEnum.BASE_HP.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        acc_MaxHp = MaxHp;
         this.health = MaxHp;
-        this.physicalPower = acc_physicalPower + random.nextInt(EnemyStatEnum.BASE_PHYSICAL_POWER.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
-        this.physicalDefense = acc_physicalDefense + random.nextInt(EnemyStatEnum.BASE_PHYSICAL_DEFENSE.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
-        this.magicDefense = acc_magicDefense + random.nextInt(EnemyStatEnum.BASE_MAGIC_DEFENSE.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        this.physicalPower = acc_physicalPower + random.nextInt(1,EnemyStatEnum.BASE_PHYSICAL_POWER.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        acc_physicalPower = physicalPower;
+        this.physicalDefense = acc_physicalDefense + random.nextInt(1,EnemyStatEnum.BASE_PHYSICAL_DEFENSE.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        acc_physicalDefense = physicalDefense;
+        this.magicDefense = acc_magicDefense + random.nextInt(1,EnemyStatEnum.BASE_MAGIC_DEFENSE.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        acc_magicDefense = magicDefense;
         this.criticalChance = random.nextInt(100);
         this.idlePercent = random.nextInt(50);
         Enemys.add(this);
     }
 
-    @Override
-    public int getMaxHp(){
+    public int getMaxHp(Boolean flag){
         return Math.random() < 0.5 ? this.MaxHp : -1;
     }
 
-    @Override
-    public int getHealth(){
+    public int getHealth(Boolean flag){
         return Math.random() < 0.5 ? this.health : -1;
     }
 
-    @Override
-    public int getPhysicalPower(){
+    public int getPhysicalPower(Boolean flag){
         return Math.random() < 0.5 ? this.physicalPower : -1;
     }
 
-    @Override
-    public int getPhysicalDefense(){
+    public int getPhysicalDefense(Boolean flag){
         return Math.random() < 0.5 ? this.physicalDefense : -1;
     }
 
-    @Override
-    public int getMagicDefense(){
+    public int getMagicDefense(Boolean flag){
         return Math.random() < 0.5 ? this.magicDefense : -1;
     }
 
-    @Override
-    public int getCriticalChance(){
+    public int getCriticalChance(Boolean flag){
         return Math.random() < 0.9 ? this.criticalChance : -1;
+    }
+
+    public int getIdlePercent(Boolean flag){
+        return Math.random() < 0.9 ? this.idlePercent : -1;
     }
 
     public int getIdlePercent(){
@@ -82,8 +85,9 @@ public class Enemy extends GameObject{
     // 최대 체력의 5퍼만큼 체력 회복
     @TurnAct("체력 회복")
     public void healHealth(){
-        int amountHeal = Math.min( this.MaxHp, this.health + (this.MaxHp / EnemyStatEnum.PERCENT_HEAL.getStat()));
-        this.health = amountHeal;
+        int lostHealth = this.MaxHp - this.health;
+        int amountHeal = Math.min( lostHealth, (this.MaxHp * EnemyStatEnum.PERCENT_HEAL.getStat() / 100));
+        this.health = this.health + amountHeal;
         OutputHandler.printEnemy();
         OutputHandler.printheal(amountHeal);
     }

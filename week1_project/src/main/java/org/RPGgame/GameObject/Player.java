@@ -3,7 +3,7 @@ package org.RPGgame.GameObject;
 import org.RPGgame.Attack.Attack;
 import org.RPGgame.Attack.MagicAttack;
 import org.RPGgame.Attack.PhysicalAttack;
-import org.RPGgame.GameObject.Enum.ActOption;
+import org.RPGgame.GameObject.Enum.EnemyStatEnum;
 import org.RPGgame.GameObject.Enum.PlayerStatEnum;
 import org.RPGgame.GameObject.Enum.StatOption;
 import org.RPGgame.GameObject.io.InputHandler;
@@ -31,8 +31,8 @@ public class Player extends GameObject{
     public void distributeAddStats(){
         OutputHandler.printPlayerStats(this);
         StatOption option;
-        while ((option = InputHandler.choiceAddStat(this.addStat)) != StatOption.END
-                || this.addStat > 0)
+        while (this.addStat > 0
+                && (option = InputHandler.choiceAddStat(this.addStat)) != StatOption.END)
         {
             boolean Eflag = false;
             switch (option) {
@@ -65,7 +65,6 @@ public class Player extends GameObject{
                 OutputHandler.successAddStat(option);
             }
         }
-        OutputHandler.printPlayerStats(this);
         OutputHandler.endAddStat();
     }
 
@@ -86,8 +85,9 @@ public class Player extends GameObject{
     // 최대 체력의 10퍼만큼 체력 회복
     @TurnAct("체력 회복")
     public void healHealth(){
-        int amountHeal = Math.min( this.MaxHp, this.health + (this.MaxHp / PlayerStatEnum.PERCENT_HEAL.getStat()));;
-        this.health = amountHeal;
+        int lostHealth = this.MaxHp - this.health;
+        int amountHeal = Math.min( lostHealth, (this.MaxHp / PlayerStatEnum.PERCENT_HEAL.getStat()));;
+        this.health += amountHeal;
         OutputHandler.printPlayer(this.name);
         OutputHandler.printheal(amountHeal);
     }
@@ -99,23 +99,29 @@ public class Player extends GameObject{
 
     @Override
     public void objectTurn(GameObject target) {
-        ActOption option = InputHandler.turnInput();
-        switch (option) {
-            case printStatus:
-                printStatus();
-                break;
-            case PhysicalAttack:
-                PhysicalAttack(target);
-                break;
-            case MagicAttack:
-                MagicAttack(target);
-                break;
-            case healHealth:
-                healHealth();
-                break;
-            case distributeAddStat:
-                distributeAddStats();
-                break;
+        Boolean turnFlag = true;
+
+        while (turnFlag){
+            switch (InputHandler.turnInput(this.name)) {
+                case printStatus:
+                    printStatus();
+                    break;
+                case PhysicalAttack:
+                    PhysicalAttack(target);
+                    turnFlag = false;
+                    break;
+                case MagicAttack:
+                    MagicAttack(target);
+                    turnFlag = false;
+                    break;
+                case healHealth:
+                    healHealth();
+                    turnFlag = false;
+                    break;
+                case distributeAddStat:
+                    distributeAddStats();
+                    break;
+            }
         }
     }
 }

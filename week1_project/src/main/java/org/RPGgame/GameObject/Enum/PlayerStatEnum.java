@@ -9,8 +9,8 @@ public enum PlayerStatEnum {
     PLAYER_BASE_CRI(10),
     MAX_CRI(100),
     PLAYER_BASE_ADD_STAT(13), // 추가 스탯
-    BASE_STAT_INC(1), // 스탯 증가량
-    MAGIC_STAT_INC(3),// 마력은 세배
+    BASE_STAT_INC(5), // 스탯 증가량
+    MAGIC_STAT_INC(8),// 마력 증가량
     CRI_STAT_INC(5), // 치명타는 다섯배
     PERCENT_HEAL(10),
     ;
