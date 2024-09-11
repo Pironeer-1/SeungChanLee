@@ -8,8 +8,9 @@ import java.util.List;
 
 public class Game {
     static List<String> log = new ArrayList<>();
-    private Team team;
+    private final Team team;
     private Enemy enemy;
+
     public static void pushGameLog(String log){
         Game.log.add(log);
     }
@@ -21,6 +22,10 @@ public class Game {
     public Game() {
         team = new Team();
         enemy = new Enemy();
+    }
+
+    public void GameSet(){
+        //input = InputHandler.GameSetInput();
     }
 
     public void start(){

@@ -1,4 +1,4 @@
-package org.RPGgame.Attack;
+package org.RPGgame.Attack.Enum;
 
 public enum AttackType {
     PHYSICAL("물리 공격"),

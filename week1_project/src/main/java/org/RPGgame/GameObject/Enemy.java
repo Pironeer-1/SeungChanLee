@@ -29,14 +29,14 @@ public class Enemy extends GameObject{
     public Enemy() {
         name = "적";
         Random random = new Random();
-        this.MaxHp = acc_MaxHp + random.nextInt(1,EnemyStatEnum.BASE_HP.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        this.MaxHp = acc_MaxHp + random.nextInt(EnemyStatEnum.BASE_HP.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
         acc_MaxHp = MaxHp;
         this.health = MaxHp;
-        this.physicalPower = acc_physicalPower + random.nextInt(1,EnemyStatEnum.BASE_PHYSICAL_POWER.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        this.physicalPower = acc_physicalPower + random.nextInt(EnemyStatEnum.BASE_PHYSICAL_POWER.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
         acc_physicalPower = physicalPower;
-        this.physicalDefense = acc_physicalDefense + random.nextInt(1,EnemyStatEnum.BASE_PHYSICAL_DEFENSE.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        this.physicalDefense = acc_physicalDefense + random.nextInt(EnemyStatEnum.BASE_PHYSICAL_DEFENSE.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
         acc_physicalDefense = physicalDefense;
-        this.magicDefense = acc_magicDefense + random.nextInt(1,EnemyStatEnum.BASE_MAGIC_DEFENSE.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
+        this.magicDefense = acc_magicDefense + random.nextInt(EnemyStatEnum.BASE_MAGIC_DEFENSE.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
         acc_magicDefense = magicDefense;
         this.criticalChance = random.nextInt(100);
         this.idlePercent = random.nextInt(50);

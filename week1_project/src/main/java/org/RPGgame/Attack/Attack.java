@@ -1,5 +1,6 @@
 package org.RPGgame.Attack;
 
+import org.RPGgame.Attack.Enum.AttackType;
 import org.RPGgame.GameObject.GameObject;
 
 import java.util.ArrayList;
