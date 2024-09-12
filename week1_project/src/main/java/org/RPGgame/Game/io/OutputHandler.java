@@ -1,5 +1,6 @@
 package org.RPGgame.Game.io;
 
+import org.RPGgame.Game.Enum.GameEnum;
 import org.RPGgame.Game.Enum.TeamEnum;
 import org.RPGgame.GameObject.Enemy;
 import org.RPGgame.GameObject.Player;
@@ -27,5 +28,12 @@ public class OutputHandler {
 
     public static void printNewEnemy(Enemy enemy){
         System.out.println("새로운 적이 나타났습니다.");
+    }
+
+    public static void printGameOption(){
+        System.out.println("게임 옵션:");
+        System.out.print(" 1. " + GameEnum.TEAM_SETTING.getStr());
+        System.out.print(" 2. " + GameEnum.CONTINUE.getStr());
+        System.out.println(" 3. " + GameEnum.GAME_END.getStr());
     }
 }

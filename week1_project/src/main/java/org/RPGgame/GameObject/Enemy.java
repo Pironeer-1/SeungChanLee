@@ -3,8 +3,6 @@ package org.RPGgame.GameObject;
 import org.RPGgame.Attack.Attack;
 import org.RPGgame.Attack.PhysicalAttack;
 import org.RPGgame.GameObject.Enum.EnemyStatEnum;
-import org.RPGgame.GameObject.Enum.PlayerStatEnum;
-import org.RPGgame.GameObject.Enum.StatEnum;
 import org.RPGgame.GameObject.io.OutputHandler;
 
 import java.util.ArrayList;
@@ -110,11 +108,11 @@ public class Enemy extends GameObject{
             return;
         }
 
-        // 물리 공격 또는 체력 회복 중 하나를 수행
-        if (random.nextInt(2) == 1) {  // 0 또는 1 중 하나 반환
-            PhysicalAttack(target);  // 물리 공격
-        } else {
+        // 4분의 1 확률로 체력 회복, 그렇지 않으면 물리 공격
+        if (random.nextInt(4) == 0) {  // 0 ~ 3 중에서 0일 때 회복
             healHealth();  // 체력 회복
+        } else {
+            PhysicalAttack(target);  // 물리 공격
         }
     }
 }

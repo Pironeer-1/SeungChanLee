@@ -1,5 +1,7 @@
 package org.RPGgame.Game;
 
+import org.RPGgame.Game.Enum.GameEnum;
+import org.RPGgame.Game.io.InputHandler;
 import org.RPGgame.Game.io.OutputHandler;
 import org.RPGgame.GameObject.Enemy;
 
@@ -15,28 +17,40 @@ public class Game {
         Game.log.add(log);
     }
 
-    public static void showGameLog(){
-
-    }
-
     public Game() {
         team = new Team();
         enemy = new Enemy();
     }
 
-    public void GameSet(){
-        //input = InputHandler.GameSetInput();
+    public void GameSetting(Team team){
+        GameEnum option = InputHandler.GameInput();
+        switch (option) {
+            case TEAM_SETTING:
+                team.teamSetting();
+                break;
+            case CONTINUE:
+                break;
+            case GAME_END:
+                System.out.println("게임 종료");
+                break;
+            default:
+                System.out.println("올바르지 않은 선택입니다. 다시 선택하세요.");
+                break;
+        }
     }
 
     public void start(){
         team.teamSetting();
         enemy.printStatus();
 
-        while (team.isAlive()){
-            // 적이 죽을때 까지 팀과 적이 번갈아 가면서 실행
-            while (team.teamTurn(enemy)){
+        while (true){
+            // 적이 죽거나 팀이 다 죽을때 까지 까지 팀과 적이 번갈아 가면서 실행
+            while (team.teamTurn(enemy) && team.isAlive()){
                 enemy.objectTurn(team.randomPlayer());
-                team.teamSetting();
+                GameSetting(team);
+            }
+            if(!team.isAlive()){
+                break;
             }
             enemy = new Enemy();
             OutputHandler.printNewEnemy(enemy);

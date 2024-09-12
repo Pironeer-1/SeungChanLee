@@ -8,4 +8,3 @@ import java.lang.annotation.RetentionPolicy;
 @interface TurnAct{
     String value();
 }
-

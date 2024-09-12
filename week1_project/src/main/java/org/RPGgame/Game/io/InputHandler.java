@@ -1,5 +1,6 @@
 package org.RPGgame.Game.io;
 
+import org.RPGgame.Game.Enum.GameEnum;
 import org.RPGgame.Game.Enum.TeamEnum;
 import org.RPGgame.GameObject.Player;
 
@@ -64,5 +65,34 @@ public class InputHandler {
             inputPlayerIdx(players);
         }
         return - 1;
+    }
+
+    public static GameEnum GameInput(){
+        Scanner scanner = new Scanner(System.in);
+        GameEnum option = null;
+
+        OutputHandler.printGameOption();
+
+        // 사용자 입력 받기
+        int choice = scanner.nextInt();
+
+        // 입력에 따라 StatOption 할당
+        switch (choice) {
+            case 1:
+                option = GameEnum.TEAM_SETTING;
+                break;
+            case 2:
+                option = GameEnum.CONTINUE;
+                break;
+            case 3:
+                option = GameEnum.GAME_END;
+                break;
+            default:
+                System.out.println("다시 골라주세요.");
+                option = GameInput(); // 유효하지 않은 입력일 경우 재시도
+                break;
+        }
+
+        return option;
     }
 }
