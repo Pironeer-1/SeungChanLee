@@ -36,4 +36,8 @@ public class OutputHandler {
         System.out.print(" 2. " + GameEnum.CONTINUE.getStr());
         System.out.println(" 3. " + GameEnum.GAME_END.getStr());
     }
+
+    public static void printBr(){
+        System.out.println("=========================================");
+    }
 }

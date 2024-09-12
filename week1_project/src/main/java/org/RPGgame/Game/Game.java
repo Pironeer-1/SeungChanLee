@@ -45,9 +45,12 @@ public class Game {
 
         while (true){
             // 적이 죽거나 팀이 다 죽을때 까지 까지 팀과 적이 번갈아 가면서 실행
-            while (team.teamTurn(enemy) && team.isAlive()){
+            while (team.isAlive() && team.teamTurn(enemy)){
+                OutputHandler.printBr();
                 enemy.objectTurn(team.randomPlayer());
+                OutputHandler.printBr();
                 GameSetting(team);
+                OutputHandler.printBr();
             }
             if(!team.isAlive()){
                 break;
