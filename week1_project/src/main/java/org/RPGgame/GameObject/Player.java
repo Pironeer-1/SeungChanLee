@@ -3,7 +3,6 @@ package org.RPGgame.GameObject;
 import org.RPGgame.Attack.Attack;
 import org.RPGgame.Attack.MagicAttack;
 import org.RPGgame.Attack.PhysicalAttack;
-import org.RPGgame.GameObject.Enum.EnemyStatEnum;
 import org.RPGgame.GameObject.Enum.PlayerStatEnum;
 import org.RPGgame.GameObject.Enum.StatOption;
 import org.RPGgame.GameObject.io.InputHandler;
@@ -95,7 +94,7 @@ public class Player extends GameObject{
     @TurnAct("체력 회복")
     public void healHealth(){
         int lostHealth = this.MaxHp - this.health;
-        int amountHeal = Math.min( lostHealth, (this.MaxHp / PlayerStatEnum.PERCENT_HEAL.getStat()));;
+        int amountHeal = Math.min( lostHealth, (this.MaxHp * PlayerStatEnum.PERCENT_HEAL.getStat()) / 100);;
         this.health += amountHeal;
         OutputHandler.printPlayer(this.name);
         OutputHandler.printheal(amountHeal);

@@ -13,7 +13,7 @@ public enum PlayerStatEnum {
     BASE_STAT_INC(5), // 스탯 증가량
     MAGIC_STAT_INC(8),// 마력 증가량
     CRI_STAT_INC(5), // 치명타는 다섯배
-    PERCENT_HEAL(10),
+    PERCENT_HEAL(30),
     ;
 
     private final int stat;
