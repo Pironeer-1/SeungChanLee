@@ -21,9 +21,10 @@ public class OutputHandler {
     public static void printInputName(){
         System.out.println("추가 할 플레이어의 이름을 입력하세요");
     }
+
     public static void printInputIdx(List<Player> players){
         for (int i = 0; i < players.size(); i++) {
-            System.out.println(i + " 번을 누르면 삭제: " + players.get(i).getName());
+            System.out.println( (i + 1) + " 번을 누르면 삭제: " + players.get(i).getName());
         }
         System.out.println("-1을 누르면 플레이어 삭제 취소");
     }
@@ -44,6 +45,6 @@ public class OutputHandler {
     }
 
     public static void PrintGameMessage(GameMessage message){
-        System.out.println(message);
+        System.out.println(message.getStr());
     }
 }

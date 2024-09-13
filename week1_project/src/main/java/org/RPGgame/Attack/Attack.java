@@ -24,8 +24,12 @@ public abstract class Attack {
         this.attackTarget = attackTarget;
     }
 
-    public AttackType getAttackType() {
-        return attackType;
+    public String getAttackerType(){
+        return attacker.getClass().getTypeName();
+    }
+
+    public String getAttackType() {
+        return attackType.getStr();
     }
 
     public int getPower() {

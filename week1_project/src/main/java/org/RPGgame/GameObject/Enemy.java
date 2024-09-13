@@ -25,7 +25,7 @@ public class Enemy extends GameObject{
 
     // 점점 적이 강해짐
     public Enemy() {
-        name = "적";
+        name = (Enemy.getTotalEnemy() + 1)+ "번째 적";
         Random random = new Random();
         this.MaxHp = acc_MaxHp + random.nextInt(EnemyStatEnum.BASE_HP.getStat() / EnemyStatEnum.STAT_WEIGHT.getStat());
         acc_MaxHp = MaxHp;

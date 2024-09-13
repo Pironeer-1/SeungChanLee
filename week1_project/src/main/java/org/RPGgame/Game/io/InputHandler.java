@@ -57,8 +57,8 @@ public class InputHandler {
         OutputHandler.printInputIdx(players);
 
         int input = scanner.nextInt();
-        if(0 <= input && input < players.size()){
-            return scanner.nextInt();
+        if(0 < input && input <= players.size()){
+            return input - 1;
         } else if (input == -1) {
             return -1;
         } else {
