@@ -1,6 +1,7 @@
 package org.RPGgame.Game;
 
 import org.RPGgame.Game.Enum.GameEnum;
+import org.RPGgame.Game.Enum.GameMessage;
 import org.RPGgame.Game.io.InputHandler;
 import org.RPGgame.Game.io.OutputHandler;
 import org.RPGgame.GameObject.Enemy;
@@ -29,12 +30,12 @@ public class Game {
                 team.teamSetting();
                 break;
             case CONTINUE:
+                OutputHandler.PrintGameMessage(GameMessage.MESSAGE_CONTINUE);
                 break;
             case GAME_END:
-                System.out.println("게임 종료");
+                OutputHandler.PrintGameMessage(GameMessage.MESSAGE_END);
                 break;
             default:
-                System.out.println("올바르지 않은 선택입니다. 다시 선택하세요.");
                 break;
         }
     }

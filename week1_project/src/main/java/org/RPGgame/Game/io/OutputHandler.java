@@ -1,7 +1,9 @@
 package org.RPGgame.Game.io;
 
 import org.RPGgame.Game.Enum.GameEnum;
+import org.RPGgame.Game.Enum.GameMessage;
 import org.RPGgame.Game.Enum.TeamEnum;
+import org.RPGgame.Game.Game;
 import org.RPGgame.GameObject.Enemy;
 import org.RPGgame.GameObject.Player;
 
@@ -39,5 +41,9 @@ public class OutputHandler {
 
     public static void printBr(){
         System.out.println("=========================================");
+    }
+
+    public static void PrintGameMessage(GameMessage message){
+        System.out.println(message);
     }
 }

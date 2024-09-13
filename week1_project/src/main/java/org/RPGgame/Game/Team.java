@@ -25,7 +25,7 @@ public class Team {
 
     // 팀의 상태 출력
     public void printTeamStatus() {
-        System.out.println("========== 팀 상태 ==========");
+        System.out.println();
         for (Player player : players) {
             player.printStatus();
         }

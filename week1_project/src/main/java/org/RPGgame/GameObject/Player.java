@@ -99,7 +99,7 @@ public class Player extends GameObject{
 
     @Override
     public void objectTurn(GameObject target) {
-        Boolean turnFlag = true;
+        boolean turnFlag = true;
 
         while (turnFlag){
             switch (InputHandler.turnInput(this.name)) {
