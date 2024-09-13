@@ -29,6 +29,7 @@ public class Player extends GameObject{
         return addStat;
     }
 
+    // 0~3의 추가 스탯받음
     public void addAddStat() {
         Random random = new Random();
         int randomAddStat = random.nextInt(PlayerStatEnum.PLAYER_ACC_ADD_STAT.getStat());
