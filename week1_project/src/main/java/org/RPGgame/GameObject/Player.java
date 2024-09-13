@@ -9,6 +9,8 @@ import org.RPGgame.GameObject.Enum.StatOption;
 import org.RPGgame.GameObject.io.InputHandler;
 import org.RPGgame.GameObject.io.OutputHandler;
 
+import java.util.Random;
+
 
 public class Player extends GameObject{
     private int addStat;
@@ -25,6 +27,12 @@ public class Player extends GameObject{
 
     public int getAddStat() {
         return addStat;
+    }
+
+    public void addAddStat() {
+        Random random = new Random();
+        int randomAddStat = random.nextInt(PlayerStatEnum.PLAYER_ACC_ADD_STAT.getStat());
+        this.addStat += randomAddStat;
     }
 
     // 스탯 분배

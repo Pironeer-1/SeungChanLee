@@ -32,6 +32,12 @@ public class Team {
         System.out.println("=============================");
     }
 
+    // 팀의 모든 플레이어 추가 스탯 주기
+    public void addAddStatPlayers(){
+        System.out.println("적을 물리쳐서 보상으로 랜덤 추가 스탯(0~5)을 받았습니다!!!!");
+        players.forEach(Player::addAddStat);
+    }
+
     // 팀에 플레이어 추가
     public void addPlayer(Player player) {
         players.add(player);

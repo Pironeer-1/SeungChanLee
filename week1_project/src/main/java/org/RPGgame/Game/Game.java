@@ -42,6 +42,7 @@ public class Game {
                 EattackCount++;
             }
         }
+        System.out.println("============== 게임 종료 ==============");
         System.out.println("플레이어 공격 횟수: " + attackCount);
         System.out.println("플레이어 물리 공격 횟수: " + PattackCount);
         System.out.println("플레이어 마법 공격 횟수: " + MattackCount);
@@ -75,27 +76,45 @@ public class Game {
 
         while (true){
             // 적이 죽거나 팀이 다 죽을 때까지 팀과 적이 번갈아 가면서 실행
-            while (team.isAlive() && team.teamTurn(enemy)){
-                OutputHandler.printBr();
-                enemy.objectTurn(team.randomPlayer());
-                OutputHandler.printBr();
-                if(GameSetting(team)){
+            while (true){
+                if(!team.isAlive()){
+                    System.out.println("전멸하여 게임을 종료합니다.....");
+                    break;
+                }
+                if(!team.teamTurn(enemy)){
+                    OutputHandler.printBr();
+                    System.out.println("@@@@@@ 적을 물리쳤습니다 @@@@@@@");
+                    OutputHandler.printBr();
                     break;
                 }
                 OutputHandler.printBr();
+                // 적 턴
+                enemy.objectTurn(team.randomPlayer());
+                OutputHandler.printBr();
+                // 적 턴이 끝날 때마다 계속 할 건지 물음
+                if(!GameSetting(team)){
+                    GameLog();
+                    return;
+                }
+                OutputHandler.printBr();
             }
+            // 팀이 죽거나 게임 종료를 누르면 끝!
             if(!team.isAlive()){
-                break;
+                GameLog();
+                return;
             }
-            if(GameSetting(team)) {
-                break;
+
+            if(!GameSetting(team)) {
+                GameLog();
+                return;
             }
+            // 적을 물리쳤으니 추가 스탯 보상 받기!
+            team.addAddStatPlayers();
+
+            // 새로운 적 등장!!
             enemy = new Enemy();
             OutputHandler.printNewEnemy(enemy);
             enemy.printStatus();
         }
-
-        GameLog();
     }
-
 }
