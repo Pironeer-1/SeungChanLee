@@ -1,10 +1,12 @@
 package com.pironeer.week2.repository.domain;
 
-//import com.pironeer.week2.dto.request.CommentUpdateRequest;
+import com.pironeer.week2.dto.request.CommentUpdateRequest;
 import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 public class Comment {
@@ -14,6 +16,7 @@ public class Comment {
     private String content;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private List<Comment> replies;
 
     @Builder
     public Comment(
@@ -22,19 +25,21 @@ public class Comment {
             Long topicId,
             String content,
             LocalDateTime createdAt,
-            LocalDateTime updatedAt) {
+            LocalDateTime updatedAt,
+            List<Comment> replies
+    ) {
         this.commentId = commentId;
         this.parentId = parentId;
         this.topicId = topicId;
         this.content = content;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
+        this.replies = replies != null ? replies : new ArrayList<>();
     }
 
-//    public Comment update(CommentUpdateRequest request) {
-//        this.topicId = request.getTopicId();
-//        this.content = request.getContent();
-//        this.updatedAt = LocalDateTime.now();
-//        return this;
-//    }
+    public Comment update(CommentUpdateRequest request) {
+        this.content = request.content();
+        this.updatedAt = LocalDateTime.now();
+        return this;
+    }
 }
