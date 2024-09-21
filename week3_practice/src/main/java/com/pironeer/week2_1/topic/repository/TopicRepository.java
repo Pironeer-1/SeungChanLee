@@ -15,7 +15,7 @@ public class TopicRepository {
     private final AtomicLong topicIdxGenerator = new AtomicLong(0);
     private final Map<Long, Topic> topicMap = new HashMap<>();
 
-    public void save(Topic topic) {
+    public Topic save(Topic topic) {
         if(topic.getId() == null) {
             Long id = topicIdxGenerator.incrementAndGet();
             topic.setId(id);
@@ -23,6 +23,7 @@ public class TopicRepository {
         } else {
             topicMap.replace(topic.getId(), topic);
         }
+        return topic;
     }
 
     public Optional<Topic> findById(Long id) {
@@ -34,8 +35,9 @@ public class TopicRepository {
         return topicMap.values().stream().toList();
     }
 
-    public void deleteById(Long id) {
+    public Long deleteById(Long id) {
         Assert.notNull(id, "ID MUST NOT BE NULL");
         topicMap.remove(id);
+        return id;
     }
 }

@@ -1,5 +1,8 @@
 package com.pironeer.week2_1.topic.service;
 
+import com.pironeer.week2_1.global.dto.response.result.ListResult;
+import com.pironeer.week2_1.global.dto.response.result.SingleResult;
+import com.pironeer.week2_1.global.service.ResponseService;
 import com.pironeer.week2_1.topic.dto.request.TopicCreateRequest;
 import com.pironeer.week2_1.topic.dto.request.TopicUpdateRequest;
 import com.pironeer.week2_1.topic.dto.response.TopicResponse;
@@ -16,19 +19,22 @@ import java.util.List;
 public class TopicService {
     private final TopicRepository topicRepository;
 
-    public void save(TopicCreateRequest request) {
-        topicRepository.save(TopicMapper.from(request));
+    public SingleResult<Long> save(TopicCreateRequest request) {
+        Topic topic = topicRepository.save(TopicMapper.from(request));
+        return ResponseService.getSingleResult(topic.getId());
     }
 
-    public TopicResponse findById(Long id) {
+    public SingleResult<TopicResponse> findById(Long id) {
         Topic topic = topicRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("TOPIC NOT FOUND"));
-        return TopicResponse.of(topic);
+        TopicResponse topicResponse = TopicResponse.of(topic);
+        return ResponseService.getSingleResult(topicResponse);
     }
 
-    public List<TopicResponse> findAll() {
+    public ListResult<TopicResponse> findAll() {
         List<Topic> topics = topicRepository.findAll();
-        return topics.stream().map(TopicResponse::of).toList();
+        List<TopicResponse> list = topics.stream().map(TopicResponse::of).toList();
+        return ResponseService.getListResult(list);
     }
 
     public TopicResponse update(TopicUpdateRequest request) {
@@ -38,7 +44,8 @@ public class TopicService {
         return TopicResponse.of(topic);
     }
 
-    public void deleteById(Long id) {
+    public Long deleteById(Long id) {
         topicRepository.deleteById(id);
+        return id;
     }
 }
