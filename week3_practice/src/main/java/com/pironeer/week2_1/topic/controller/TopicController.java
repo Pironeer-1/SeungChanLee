@@ -25,7 +25,12 @@ public class TopicController {
 
     @PostMapping
     @Operation(summary = "게시물 작성")
-    public SuccessResponse<SingleResult<Long>> create(@Valid @RequestBody TopicCreateRequest request) {
+    public SuccessResponse<SingleResult<Long>> create(
+            @RequestAttribute("id") String userId,
+            @Valid @RequestBody TopicCreateRequest request
+    ) {
+        System.out.println(userId);
+
         SingleResult<Long> save = topicService.save(request);
         return SuccessResponse.ok(save);
     }
@@ -54,7 +59,7 @@ public class TopicController {
     @DeleteMapping("/{topicId}")
     @Operation(summary = "게시물 삭제")
     public ResponseEntity<Long> remove(@PathVariable("topicId") Long id) {
-        topicService.deleteById(id);
-        return ResponseEntity.ok().build();
+        Long deletedId = topicService.deleteById(id);
+        return ResponseEntity.ok().body(deletedId);
     }
 }

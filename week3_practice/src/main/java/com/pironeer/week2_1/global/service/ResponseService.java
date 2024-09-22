@@ -9,15 +9,17 @@ import java.util.List;
 @Component
 public class ResponseService {
 
-    public static <T>SingleResult<T> getSingleResult(T data) {
+    // 단일 값을 감싸는 메서드
+    public static <T> SingleResult<T> getSingleResult(T data) {
         SingleResult<T> result = new SingleResult<>();
         result.setData(data);
         return result;
     }
 
-    public static <T>ListResult<T> getListResult(List<T> data) {
+    // 리스트 값을 감싸는 메서드
+    public static <T> ListResult<T> getListResult(List<T> list) {
         ListResult<T> result = new ListResult<>();
-        result.setData(data);
+        result.setList(list);
         return result;
     }
 }

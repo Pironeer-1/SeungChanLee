@@ -2,13 +2,16 @@ package com.pironeer.week2_1.topic.service;
 
 import com.pironeer.week2_1.global.dto.response.result.ListResult;
 import com.pironeer.week2_1.global.dto.response.result.SingleResult;
+import com.pironeer.week2_1.global.exception.CustomException;
+import com.pironeer.week2_1.global.exception.ErrorCode;
 import com.pironeer.week2_1.global.service.ResponseService;
 import com.pironeer.week2_1.topic.dto.request.TopicCreateRequest;
 import com.pironeer.week2_1.topic.dto.request.TopicUpdateRequest;
 import com.pironeer.week2_1.topic.dto.response.TopicResponse;
 import com.pironeer.week2_1.topic.mapper.TopicMapper;
+import com.pironeer.week2_1.topic.repository.TopicMemoryRepository;
+import com.pironeer.week2_1.topic.entity.Topic;
 import com.pironeer.week2_1.topic.repository.TopicRepository;
-import com.pironeer.week2_1.topic.repository.domain.Topic;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +23,13 @@ public class TopicService {
     private final TopicRepository topicRepository;
 
     public SingleResult<Long> save(TopicCreateRequest request) {
-        Topic topic = topicRepository.save(TopicMapper.from(request));
-        return ResponseService.getSingleResult(topic.getId());
+        Topic savedTopic = topicRepository.save(TopicMapper.from(request));
+        return ResponseService.getSingleResult(savedTopic.getId());
     }
 
     public SingleResult<TopicResponse> findById(Long id) {
         Topic topic = topicRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("TOPIC NOT FOUND"));
+                .orElseThrow(() -> new CustomException(ErrorCode.BOARD_NOT_FOUND));
         TopicResponse topicResponse = TopicResponse.of(topic);
         return ResponseService.getSingleResult(topicResponse);
     }
@@ -45,7 +48,7 @@ public class TopicService {
     }
 
     public Long deleteById(Long id) {
-        topicRepository.deleteById(id);
-        return id;
+        Long deleteId = topicRepository.deleteById(id);
+        return deleteId;
     }
 }

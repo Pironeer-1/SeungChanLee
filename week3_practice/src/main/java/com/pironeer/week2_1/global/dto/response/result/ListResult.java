@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 @Setter
 public class ListResult<T> {
-    @Schema(description = "단일 데이터")
-    private List<T> data;
+
+    @Schema(description = "리스트 데이터")
+    private List<T> list;
 }

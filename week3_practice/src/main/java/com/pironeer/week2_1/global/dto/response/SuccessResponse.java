@@ -6,13 +6,14 @@ import lombok.Getter;
 
 @Getter
 public class SuccessResponse<T> {
+
     @Schema(description = "성공 여부", example = "true")
     private boolean success = true;
 
-    @Schema(description = "상테코드", example = "200")
+    @Schema(description = "상태 코드", example = "1")
     private int code;
 
-    @Schema(description = "응답 메세지", example = "성공하셨습니다.")
+    @Schema(description = "응답 메세지", example = "성공하였습니다.")
     private String message;
 
     @Schema(description = "응답 데이터")
@@ -24,8 +25,8 @@ public class SuccessResponse<T> {
         this.result = result;
     }
 
-    public static <T> SuccessResponse<T> of(int code, String message, T result) {
-        return new SuccessResponse<>(code,message,result);
+    public static <T> SuccessResponse<T> of(int code, String message, T data) {
+        return new SuccessResponse<>(code, message, data);
     }
 
     public static <T> SuccessResponse<T> ok(T data) {

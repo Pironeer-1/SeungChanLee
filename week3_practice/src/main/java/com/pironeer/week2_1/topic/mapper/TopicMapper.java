@@ -1,7 +1,7 @@
 package com.pironeer.week2_1.topic.mapper;
 
 import com.pironeer.week2_1.topic.dto.request.TopicCreateRequest;
-import com.pironeer.week2_1.topic.repository.domain.Topic;
+import com.pironeer.week2_1.topic.entity.Topic;
 
 import java.time.LocalDateTime;
 

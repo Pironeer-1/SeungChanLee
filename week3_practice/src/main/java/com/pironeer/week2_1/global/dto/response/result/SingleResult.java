@@ -7,6 +7,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class SingleResult<T> {
+
     @Schema(description = "단일 데이터")
     private T data;
 }

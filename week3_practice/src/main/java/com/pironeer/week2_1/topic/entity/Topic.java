@@ -1,4 +1,4 @@
-package com.pironeer.week2_1.topic.repository.domain;
+package com.pironeer.week2_1.topic.entity;
 
 import com.pironeer.week2_1.topic.dto.request.TopicUpdateRequest;
 import lombok.Builder;
