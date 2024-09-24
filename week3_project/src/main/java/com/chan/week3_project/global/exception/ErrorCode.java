@@ -1,4 +1,4 @@
-package com.chan.week3_project.global.Exception;
+package com.chan.week3_project.global.exception;
 
 
 import lombok.AllArgsConstructor;

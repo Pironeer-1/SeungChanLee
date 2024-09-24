@@ -1,4 +1,4 @@
-package com.chan.week3_project.global.Exception;
+package com.chan.week3_project.global.exception;
 
 import com.chan.week3_project.global.dto.response.ErrorResponse;
 import com.chan.week3_project.global.dto.result.ExceptionResult;
@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.chan.week3_project.global.Exception.ErrorCode.PARAMETER_GRAMMAR_ERROR;
-import static com.chan.week3_project.global.Exception.ErrorCode.PARAMETER_VALIDATION_ERROR;
+import static com.chan.week3_project.global.exception.ErrorCode.PARAMETER_GRAMMAR_ERROR;
+import static com.chan.week3_project.global.exception.ErrorCode.PARAMETER_VALIDATION_ERROR;
 
 
 @RequiredArgsConstructor
