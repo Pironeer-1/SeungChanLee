@@ -38,6 +38,6 @@
 ---
 
 # 3주차 실습 및 과제
-### 응답 규격화와 디렉토리 구조
+### 응답 규격화와 패키지 구조
 [정리한 내용](https://seemly-fuchsia-ae4.notion.site/3-109dbf7eb007802b9070d4639f03ab8d)
 [컨벤션 정리 내용](https://seemly-fuchsia-ae4.notion.site/109dbf7eb007807b8bd5e4d27b29fee3?pvs=74)
