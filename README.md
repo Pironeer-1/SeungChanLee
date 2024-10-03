@@ -6,6 +6,11 @@
 
 ---
 
+# 스터디
+[스터디 링크](https://swift-pastry-05e.notion.site/3-d56a7fba8a8548b2bac84e4d301838cf)
+
+---
+
 # 0주차 과제 
 ### 환경 세팅
 ### 자바 기본 문법
@@ -29,3 +34,10 @@
 [실습및 과제 정리](https://seemly-fuchsia-ae4.notion.site/2-101dbf7eb0078045ab0ed64d0111e7d0?pvs=25)
 
 ![erd](week2/week2_erd.png)
+
+---
+
+# 3주차 실습 및 과제
+### 응답 규격화와 패키지 구조
+[정리한 내용](https://seemly-fuchsia-ae4.notion.site/3-109dbf7eb007802b9070d4639f03ab8d)
+[컨벤션 정리 내용](https://seemly-fuchsia-ae4.notion.site/109dbf7eb007807b8bd5e4d27b29fee3?pvs=74)
