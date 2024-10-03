@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Repository
-public class TopicRepository {
+//@Repository
+public class TopicRepository implements TopicRepositoryV3 {
     private final AtomicLong topicIdxGenerator = new AtomicLong(0);
     private final Map<Long, Topic> topicMap = new HashMap<>();
 
