@@ -41,3 +41,9 @@
 ### 응답 규격화와 패키지 구조
 [정리한 내용](https://seemly-fuchsia-ae4.notion.site/3-109dbf7eb007802b9070d4639f03ab8d)
 [컨벤션 정리 내용](https://seemly-fuchsia-ae4.notion.site/109dbf7eb007807b8bd5e4d27b29fee3?pvs=74)
+
+# 4주차 실습
+### jpa
+[정리한 내용](https://seemly-fuchsia-ae4.notion.site/JPA-10fdbf7eb0078030be6ec4342a013436)
+
+# [스터디 회고](https://seemly-fuchsia-ae4.notion.site/114dbf7eb007805fbf29da558ff0cee2)
